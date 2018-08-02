@@ -24,13 +24,14 @@ A) select * from hotel h inner join room r on h.hotel_no=r.hotel_no where city='
   H235|Park Place|New York|1289|H235|N|195.0
 
 3.List the names and cities of all guests, ordered according to their cities.
-A) select * from guest order by city;
+A) select * from guest order by city,name;
     G467|Robert Swift|Atlanta
-    G367|Tara Cummings|Baltimore
     G190|Edward Cane|Baltimore
+    G367|Tara Cummings|Baltimore
     G230|Tom Hancock|Philadelphia
     G256|Adam Wayne|Pittsburgh
     G879|Vanessa Parry|Pittsburgh
+
 
 4.List all details for non-smoking rooms in ascending order of price.
 A) select * from room where type='N' order by price;
@@ -87,15 +88,15 @@ A)select h.name,b.date_from,b.date_to,b.room_no from hotel h inner join booking 
       Park Place|1999-09-05|1267
 
 10.What is the number of bookings that started in the month of September?
-A)select count(*) from Booking where Date_From between '1999-09-01' and '1999-09-30';
+A)select count(*) from booking where date_from between '1999-09-01' and '1999-09-30';
      4
 
 11.List the names and cities of guests who began a stay in New York in August.
-A) select g.Name,g.City from Guest g inner join Booking b on g.Guest_No=b.Guest_No where b.Hotel_No in(select Hotel_No from Hotel where City='New York')and b.Date_From between '1999-08-01' and '1999-08-31';
+A) select g.name,g.city from guest g inner join booking b on g.guest_no=b.guest_no where b.hotel_no in(select hotel_no from hotel where city='New York')and b.date_from between '1999-08-01' and '1999-08-31';
     Adam Wayne|Pittsburgh
     Tara Cummings|Baltimore
 
-12.List the hotel names and room numbers of any hotel rooms that have not been    booked.
+12.List the hotel names and room numbers of any hotel rooms that have not been booked.
 A)select h.name,r.room_no from hotel h inner join room r on h.hotel_no=r.hotel_no where r.room_no not in(select room_no from booking);
       Clairmont Hotel|257
       Empire Hotel|313
