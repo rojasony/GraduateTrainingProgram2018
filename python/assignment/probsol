@@ -1,0 +1,174 @@
+11-sep-2018
+submission by roja.pilli@accenture.com
+
+1.You are asked to ensure that the first and last names of people begin with a capital letter in their passports. For example, alison heck should be capitalised correctly as Alison Heck.
+alison heck => Alison Heck
+
+>>str=raw_input("enter name:")
+new=str.title()
+print(new)
+
+>>enter name:roja pilli
+Roja Pilli
+----------------
+1.Given a full name, your task is to capitalize the name appropriately.
+Input Format:-
+A single line of input containing the full name, S .
+Constraints:-
+* 0<len(S)<1000
+* The string consists of alphanumeric characters and spaces.
+Note: in a word only the first character is capitalized. Example 12abc when capitalized remains 12abc.
+Output Format:-
+Print the capitalized string, S .
+Sample Input
+------------
+chris alan
+Sample Output
+-------------
+Chris Alan
+
+str=raw_input("enter string")
+b=str.split()
+print(b)
+list=[]
+for i in b:
+    list.append(i.capitalize())
+print(' '.join(list))
+
+>>>enter string12ab roja
+['12ab', 'roja']
+12ab Roja
+-------------
+2.You have a record of  students. Each record contains the student's name, and their percent marks in Maths, Physics and Chemistry. 
+The marks can be floating values. The user enters some integer  followed by the names and marks for students.
+You are required to save the record in a dictionary data type. The user then enters a student's name. 
+Output the average percentage marks obtained by that student, correct to two decimal places
+ans:
+student={}
+count=raw_input("Enter the student count")
+for i in range(int(count)):
+    name=raw_input("Enter the name")
+    mark_list=[]
+    for j in range(3):
+        marks=input()
+        mark_list.append(marks)
+        student[name]=mark_list
+print(student)
+name=raw_input()
+if name in student:
+    sum1=sum(student[name])
+    avg=sum1/3
+    print(round(avg,2))
+else:
+    print("No such student in the list")
+ ----------------   
+3.You are given two values a and b . 
+Perform integer division and print a/b .
+ans:
+try:
+  dict={}
+  n=input("Enter the no of test case")
+  for i in range(n):
+      s=raw_input("Enter a and b");
+      l1=s.split(" ")
+      dict[i]=l1
+  for i in range(n):
+      print int(dict[i][0])/int(dict[i][1])
+  #print dict
+except ZeroDivisionError:
+    print("Error Code: integer division or modulo by zero")
+except ValueError,Argument:
+    print("Error Code: invalid literal for int() with base 10:%s"%l[1])
+--------------
+4.Initialize your list and read in the value of  followed by  lines of commands where each command will be of the 7 types listed above. 
+Iterate through each command in order and perform the corresponding operation on your list.
+ans:
+l=[]
+N=int(input("enter the testcases"))
+for i in range(N):
+    comm=input("insert the command:")
+    if comm=="insert":
+        ind_num=input("Enter the index and number: ")
+        sep=ind_num.split(" ")
+        l.insert(int(sep[0]),int(sep[1]))
+    elif comm=="print":
+        print(l)
+    elif comm=="remove":
+        a=input("enter ele to remove: ")
+        l.remove(int(sep[1]))
+    elif comm=="append":
+        b=input("enter index and number: ")
+        l.append(int(b))
+    elif comm=="sort":
+        l.sort()
+    elif comm=="pop":
+        l.pop()
+    elif comm=="reverse":
+        l.reverse()
+    else:
+        print("enter the valid command")
+
+enter the testcases12
+insert the command:insert
+Enter the index and number: 0 1
+insert the command:insert
+Enter the index and number: 1 10
+insert the command:insert
+Enter the index and number: 2 5
+insert the command:append
+enter index and number: 4
+insert the command:append
+enter index and number: 6
+insert the command:sort
+insert the command:print
+[1, 4, 5, 6, 10]
+insert the command:remove
+enter ele to remove: 6
+insert the command:print
+[1, 4, 6, 10]
+insert the command:poip
+enter the valid command
+insert the command:pop
+insert the command:0
+enter the valid command
+--------------
+6.If set A is subset of set B , print True.
+If set A is not a subset of set B , print False.
+ans:
+N = int(input("enter cases:"))
+val=[]
+for i in range(N):
+    a = int(input("no.of elements in A:"))
+    A = set(input().split())
+    print(A)
+    b = int(input("no.of elements in B:"));
+    B = set(input().split())
+    print(B)
+    bool_val=set(A).issubset(set(B))
+    val.append(bool_val)
+print(val)
+
+
+enter cases:2
+no.of elements in A:2
+1 2
+{'1', '2'}
+no.of elements in B:2
+3 4
+{'3', '4'}
+no.of elements in A:3
+1 2 3
+{'1', '3', '2'}
+no.of elements in B:2
+1 2
+{'1', '2'}
+[False, False]
+-------------
+
+
+
+
+
+
+
+
