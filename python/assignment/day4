@@ -1,0 +1,251 @@
+date:11-sep-2018
+by:roja.pilli@accenture.com
+
+1.Define a class named Shape and its subclass Square. The Square class has an init function which takes a length as argument. Both classes have a area function which can print the area of the shape where Shape's area is 0 by default.
+A)class Shape:
+    def __init__(self):
+        print("in shape")
+    def area(self):
+        print(0)
+class Square(Shape):
+    def __init__(self,length):
+        self.length=length
+        print("in square")
+        Shape.__init__(self)
+    def area(self):
+        a=(self.length*self.length)
+        print("the area of square with length of %.2f is %.2f"%(self.length,a))
+
+obj=Square(2.0)
+obj.area()
+----
+in square
+in shape
+the area of square with length of 2.60 is 6.76
+
+-------------------------------------------------
+2.Define a class Person and its two child classes: Male and Female. All classes have a method "getGender" which can print "Male" for Male class and "Female" for Female class.
+A)
+ class Person:
+    def getgender(self):
+        return 0
+class Male(Person):
+    def getgender(self):
+        return "male"
+class Female(Person):
+    def getgender(self):
+        return "female"
+M=Male()
+F=Female()
+print(M.getgender())
+print(F.getgender())
+---
+male
+female
+----------------------------------------
+3.Design and implement a Money class that stores monetary values in dollars and cents. Special method init should have the following function header, def init(self, dollars, cents) Include special method repr (str) for displaying values in dollars and cents: $ 0.45, $ 1.00, $ 1.25. Also include special method add, and three getter methods that each provide the monetary value in another currency. Choose any three currencies to convert to.
+
+class Money:
+  def __init__(self,dollars,cent):
+    self.dollars=dollars
+    self.cent=cent
+  def repr(self):
+    s=(self.dollars,self.cent)
+    if int(self.cent)<=99:
+      self.mvalue=float(".".join(s))
+      print('The currency is $',self.mvalue)
+    else:
+      c=float(self.cent)/100
+      self.mvalue=float(self.dollar)+c
+      print('The currency is $',self.mvalue)
+    self.add()  
+    print("value in Rs :", self.getrs())
+    print("value in euro:", self.geteuro())
+    print("value in Yen:", self.getyen())
+  #convertion to other currency  
+  def add(self):    
+    self.rs=self.mvalue*64.48
+    self.euro=0.85*self.mvalue
+    self.yen=self.mvalue*113.51
+  #getter functions  
+  def getrs(self):
+    return self.rs
+  def geteuro(self):
+    return self.euro
+  def getyen(self):
+    return self.yen
+    
+    #object instantiation
+a=input("enter the dollar:")
+b=input("enter the cent:")
+obj=Money(a,b)
+obj.repr()'''
+
+enter the dollar:12
+enter the cent:100
+The currency is $ 13.0
+value in Rs : 838.24
+value in euro: 11.049999999999999
+value in Yen: 1475.63
+
+------------------------------------
+4.
+def spaces(s):
+    str1 = ""
+    for j in range(s):
+        str1 = str1 + " "
+    return str1
+def stars(star):
+    st = ""
+    for j in range(star):
+        st = st + "*"
+    return st
+s = int(input("enter the rows"))
+star = 2
+for i in range(s):
+    strA = spaces(s - 1)
+    strB = stars(star)
+    s = s - 1
+    star = star + 2
+    print(strA + strB)
+
+enter the rows 5
+    **
+   ****
+  ******
+ ********
+**********
+------------------------------------------
+5.
+ def eq(self,a,b):
+    return (a==self.x and b==self.y)
+ def repr(self):
+   print 'Coordinate(',self.getX(),',',self.getY(),')'
+
+
+a=int(raw_input("enter the x coordinate:"))
+b=int(raw_input("enter the y coordinate:"))
+obj=Coordinate(a,b)
+print obj.__str__()
+print obj.eq(5,6)
+obj.repr()'''
+------------------------------
+6.
+class Temperature:
+    def __init__(self,temperature):
+        pass
+    def _str__ (self):
+        pass
+    def aboveFreezing(self):
+        pass
+    def convertToFahren(self):
+        pass
+    def convertToCelsius(self):
+        pass
+    def convertToKelvin(self):
+        pass
+class Fahrenheit(Temperature):
+    def __init__(self,t):
+        self.temp=t
+    def __str__(self):
+        return self.temp,"degrees fahrenheit"
+    def aboveFreezing(self):
+        if self.temp > 32:
+            return True
+        else:
+            return False
+    def convertToCelsius(self):
+        a=5/9
+        return (self.temp-32)*a
+    def convertToKelvin(self):
+        a=5/9
+        return (self.temp+459.67)*a
+
+class Celsius(Temperature):
+    def __init__(self, t):
+        self.temp = t
+
+    def __str__(self):
+        return self.temp, "degrees celsius"
+
+    def aboveFreezing(self):
+        if self.temp > 0:
+            return True
+        else:
+            return False
+
+    def convertToFarenheit(self):
+        a = 9 / 5
+        return (self.temp *a) +32
+
+    def convertToKelvin(self):
+        a = 5 / 9
+        return (self.temp + 273.15)
+
+class Kelvin(Temperature):
+    def __init__(self, t):
+       self.temp = t
+
+    def __str__(self):
+        return self.temp, "degrees kelvin"
+
+    def aboveFreezing(self):
+        if self.temp > 273.15:
+            return True
+        else:
+            return False
+
+    def convertToFarenheit(self):
+        a = 9 / 5
+        return (self.temp * a) -459.67
+
+    def convertToCelsius(self):
+        return self.temp -273.15
+
+
+f=float(input("enter the fahrenheit temperature"))
+c=float(input("enter the celsius temperature"))
+k=float(input("enter the kelvin temperature"))
+F=Fahrenheit(f)
+C=Celsius(c)
+K=Kelvin(k)
+print(F.__str__())
+print(C.__str__())
+print(K.__str__())
+print("is farenhiet above freezing ", F.aboveFreezing())
+print("is celcius above freezing ", C.aboveFreezing())
+print("is kelvin above freezing ", K.aboveFreezing())
+
+print("farenheit in celsius ", F.convertToCelsius())
+print("farenheit in kelvin ", F.convertToKelvin())
+
+print("celsius in farenheit", C.convertToFarenheit())
+print("celcius in kelvin ", C.convertToKelvin())
+
+print("kelvin in farenheit ", K.convertToFarenheit())
+print("kelvin in celcius", K.convertToCelsius())
+
+
+enter the fahrenheit temperature45
+enter the celsius temperature56
+enter the kelvin temperature67
+(45.0, 'degrees fahrenheit')
+(56.0, 'degrees celsius')
+(67.0, 'degrees kelvin')
+is farenhiet above freezing  True
+is celcius above freezing  True
+is kelvin above freezing  False
+farenheit in celsius  7.222222222222222
+farenheit in kelvin  280.37222222222226
+celsius in farenheit 132.8
+celcius in kelvin  329.15
+kelvin in farenheit  -339.07
+kelvin in celcius -206.14999999999998
+
+
+
+
+
+
+
+
